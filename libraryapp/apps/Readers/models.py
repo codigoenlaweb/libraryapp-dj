@@ -28,7 +28,7 @@ class Readers(models.Model):
 class Loan(models.Model):
     """Model definition for Loan."""
 
-    lector = models.ForeignKey(
+    reader = models.ForeignKey(
         Readers, verbose_name='Reader', on_delete=models.CASCADE)
     book = models.ForeignKey(
         Books, verbose_name='Book', on_delete=models.CASCADE)

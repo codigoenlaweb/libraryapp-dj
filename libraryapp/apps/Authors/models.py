@@ -1,4 +1,5 @@
 from django.db import models
+from .managers import AuthorManager
 
 # Create your models here.
 class Authors(models.Model):
@@ -8,6 +9,9 @@ class Authors(models.Model):
     nationality = models.CharField(verbose_name='Author nationality', max_length=20)
     age = models.PositiveIntegerField(verbose_name='Author age')
     
+    ''' Managers '''
+    objects = AuthorManager()
+
 
     class Meta:
         """Meta definition for Authors."""

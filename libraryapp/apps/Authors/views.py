@@ -9,5 +9,6 @@ class AuthorsListView(ListView):
     context_object_name = 'authors'
     
     def get_queryset(self):
-        queryset = Authors.objects.all()
+        name = self.request.GET.get("name")
+        queryset = Authors.objects.list_authors_filter3(name)
         return queryset
