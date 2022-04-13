@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView
 from .models import Books
+from apps.Authors.models import Authors
 # Create your views here.
 
 
@@ -11,5 +12,5 @@ class BooksListView(ListView):
     def get_queryset(self):
         name = self.request.GET.get("name")
 
-        queryset = Books.objects.list_books()
+        queryset = Authors.objects.order_by()
         return queryset

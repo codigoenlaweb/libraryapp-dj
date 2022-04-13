@@ -13,11 +13,10 @@
       <input type="submit" value="search" />
     </form>
     <ul>
+      {{books.num_book}}
       {% for book in books %}
       <li>
-        {{book.title}} - {% for a in book.author.all %}
-          **{{a.name}}
-        {% endfor %}
+        {{book.name}} - {{book.count_book}}
       </li>
       {% endfor %}
     </ul>

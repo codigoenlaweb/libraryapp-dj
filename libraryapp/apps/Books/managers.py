@@ -27,7 +27,7 @@ class BooksManager(models.Manager):
         return self.filter(category__name__contains=category, author__name__contains='Holly')
 
     def algo(self):
-        return self.filter(author__name__contains='Holly').aggregate(total_count=Count('id'))
+        return self.annotate(num_book=Count('author'))
 
     # def list_books_filter2(self, name):
     #     if name == None:

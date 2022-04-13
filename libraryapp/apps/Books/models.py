@@ -25,7 +25,7 @@ class Books(models.Model):
     objects = BooksManager()
 
     category = models.ManyToManyField(Categorys, verbose_name="Category")
-    author = models.ManyToManyField(Authors)
+    author = models.ManyToManyField(Authors, related_name="author_book")
     title = models.CharField(verbose_name='Book title', max_length=50)
     release_date = models.DateField(verbose_name='book release date')
     cover_page = models.ImageField(upload_to='cover', blank=True, null=True)
