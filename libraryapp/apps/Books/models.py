@@ -1,11 +1,15 @@
 from django.db import models
 from apps.Authors.models import Authors
 from .managers import BooksManager
+from django.core.exceptions import ValidationError
 
 # Create your models here.
+
+
 class Categorys(models.Model):
     """Model definition for Categorys."""
-    name = models.CharField(verbose_name='Category name', max_length=28, unique=True)
+    name = models.CharField(verbose_name='Category name',
+                            max_length=28, unique=True)
 
     class Meta:
         """Meta definition for Categorys."""
@@ -15,9 +19,13 @@ class Categorys(models.Model):
 
     def __str__(self):
         """Unicode representation of Categorys."""
-        return  f'{self.name}'
-    
-    
+        return f'{self.name}'
+
+    def clean(self):
+        if len(self.name) <= 3:
+            raise ValidationError('the category name is too short')
+
+
 class Books(models.Model):
     """Model definition for Books."""
 
@@ -40,5 +48,3 @@ class Books(models.Model):
     def __str__(self):
         """Unicode representation of Books."""
         return f''
-
-
